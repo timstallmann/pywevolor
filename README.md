@@ -22,15 +22,14 @@ wevolor = Wevolor(host='192.168.1.1')
 # Send open command to channel 3 on the remote.
 wevolor.open_blind(3)
 
-# Send close command to channel 3 on the remote.
-wevolor.close_blind(3)
+# Send open command to channels 1 and 4 on the remote.
+wevolor.open_blinds([1, 4])
+
+# Send close command to channels 3 and 4 on the remote.
+wevolor.close_blinds([3, 4])
 
 # Get status info from Wevolor API
 wevolor.get_status()
 ```
 
-## Limitations
-
-The public API currently does not support sending commands
-to multiple channels at once.
 

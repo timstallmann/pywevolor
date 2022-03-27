@@ -36,28 +36,56 @@ class Wevolor:
 
     async def open_blind(self, channel: int) -> bool:
         """Send command to open blind on specified channel."""
-        return await self._send_command('open', [channel, ])
+        return await self.open_blinds([channel, ])
 
     async def close_blind(self, channel: int) -> bool:
         """Send command to close blind on specified channel."""
-        return await self._send_command('close', [channel, ])
+        return await self.close_blinds([channel, ])
 
     async def favorite_blind(self, channel: int) -> bool:
         """Send command to set blind on specified channel to favorite position."""
-        return await self._send_command('favorite', [channel, ])
+        return await self.favorite_blinds([channel, ])
 
     async def stop_blind(self, channel: int) -> bool:
         """Send command to stop blind on specified channel."""
-        return await self._send_command('stop', [channel, ])
+        return await self.stop_blinds([channel, ])
 
     async def open_blind_tilt(self, channel: int) -> bool:
         """Send command to open blind tilt on specified channel."""
-        return await self._send_command('tiltopen', [channel, ])
+        return await self.open_blinds_tilt([channel, ])
 
     async def close_blind_tilt(self, channel: int) -> bool:
         """Send command to close blind tilt on specified channel."""
-        return await self._send_command('tiltclose', [channel, ])
+        return await self.close_blinds_tilt([channel, ])
 
     async def stop_blind_tilt(self, channel: int) -> bool:
         """Send command to stop blind tilt on specified channel."""
-        return await self.stop_blind(channel)
+        return await self.stop_blinds_tilt(channel)
+    
+    async def open_blinds(self, channels: list[int]) -> bool:
+        """Send command to open blinds on specified channels."""
+        return await self._send_command('open', channels)
+
+    async def close_blinds(self, channels) -> bool:
+        """Send command to close blinds on specified channels."""
+        return await self._send_command('close', channels)
+
+    async def favorite_blinds(self, channels: list[int]) -> bool:
+        """Send command to set blinds on specified channels to favorite position."""
+        return await self._send_command('favorite', channels)
+
+    async def stop_blinds(self, channels: list[int]) -> bool:
+        """Send command to stop blinds on specified channels."""
+        return await self._send_command('stop', channels)
+
+    async def open_blinds_tilt(self, channels: list[int]) -> bool:
+        """Send command to open blinds tilt on specified channels."""
+        return await self._send_command('tiltopen', channels)
+
+    async def close_blinds_tilt(self, channels: list[int]) -> bool:
+        """Send command to close blinds tilt on specified channels."""
+        return await self._send_command('tiltclose', channels)
+
+    async def stop_blinds_tilt(self, channels: list[int]) -> bool:
+        """Send command to stop blinds tilt on specified channels."""
+        return await self.stop_blinds(channels)
